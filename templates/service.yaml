@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "fluentd-loki.fullname" . }}
+  labels:
+    {{- include "fluentd-loki.labels" . | nindent 4 }}
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: 24231
+      targetPort: metrics
+      protocol: TCP
+      name: metrics
+    {{- if .Values.service.ports }}
+    {{- range $port := .Values.service.ports }}
+    - port: {{ $port.containerPort }}
+      targetPort: {{ $port.containerPort }}
+      protocol: {{ $port.protocol }}
+      name: {{ $port.name }}
+    {{- end }}
+    {{- end }}
+  selector:
+    {{- include "fluentd-loki.selectorLabels" . | nindent 4 }}

@@ -1,0 +1,13 @@
+apiVersion: v2
+name: fluentd-loki
+description: A helm chart to deploy fluentd daemonset configured to Grafana Loki
+type: application
+version: 0.1.0
+appVersion: "1.14"
+icon: https://www.fluentd.org/images/miscellany/fluentd-logo_2x.png
+home: https://www.fluentd.org/
+maintainers:
+  - name: Felipe Nobrega Dias
+    email: felipe.dias@ativy.digital
+  - name: Victor Felipe Braga
+    email: victor.braga@ativy.digital

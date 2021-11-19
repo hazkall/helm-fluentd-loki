@@ -24,12 +24,12 @@ env:
 
 ```bash
 
-helm repo add fluent https://fluent.github.io/helm-charts
+helm repo add fluentd-loki https://ativy-digital.github.io/helm-fluentd-loki/
 
 helm repo update
 
 # Logging is a sugested name for namespace, you can user any namespace or not define and use default.
-helm install RELEASE fluentd/fluentd --namespace logging
+helm install RELEASE fluentd-loki/fluentd-loki -n logging
 
 ```
 

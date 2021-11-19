@@ -1,0 +1,23 @@
+apiVersion: v1
+entries:
+  fluentd-loki:
+  - apiVersion: v2
+    appVersion: "1.14"
+    created: "2021-11-19T13:23:11.068310286Z"
+    description: A helm chart to deploy fluentd daemonset configured to Grafana Loki
+    digest: daa8611e7a3c447653ed19a2a230e558f3cd37a1b64450765e13e905417b4f4d
+    home: https://www.fluentd.org/
+    icon: https://www.fluentd.org/images/miscellany/fluentd-logo_2x.png
+    maintainers:
+    - email: felipe.dias@ativy.digital
+      name: Felipe Nobrega Dias
+    - email: victor.braga@ativy.digital
+      name: Victor Felipe Braga
+    name: fluentd-loki
+    sources:
+    - https://github.com/fluent/fluentd-kubernetes-daemonset
+    type: application
+    urls:
+    - https://github.com/ativy-digital/helm-fluentd-loki/releases/download/fluentd-loki-0.2.0/fluentd-loki-0.2.0.tgz
+    version: 0.2.0
+generated: "2021-11-19T13:23:10.905386733Z"

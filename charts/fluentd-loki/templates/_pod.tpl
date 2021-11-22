@@ -21,7 +21,7 @@ containers:
       - |
         {{- if .Values.plugins }}
           {{- range $plugin := .Values.plugins }}
-            {{- print "fluent-gem install " $plugin | nindent 6 }}
+            {{- print "fluent-gem install " $plugin | nindent 8 }}
           {{- end }}
         {{- end }}
         fluent-gem install fluent-plugin-grafana-loki-licence-fix

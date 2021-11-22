@@ -29,9 +29,13 @@ tolerations: []
 ##
 affinity: {}
 
-## Annotations to be added to fluentd pods
+## Annotations to be added to fluentd daemonset
 ##
 annotations: {}
+
+## Annotations to be added to fluentd pod
+##
+podAnnotations: {}
 
 ## Deployment strategy / DaemonSet updateStrategy
 ##
@@ -200,6 +204,19 @@ fileConfigs:
       kubernetes_url "#{'https://' + ENV.fetch('KUBERNETES_SERVICE_HOST') + ':' + ENV.fetch('KUBERNETES_SERVICE_PORT') + '/api'}"
       verify_ssl "true"
       ca_file "#{ENV['KUBERNETES_CA_FILE']}"
+    </filter>
+
+    <filter kubernetes.**>
+      @type parser
+      key_name log
+      <parse>
+        @type json
+        json_parser json
+      </parse>
+      replace_invalid_sequence true
+      reserve_data true # this preserves unparsable log lines
+      emit_invalid_record_to_error false # In case of unparsable log lines keep the error log clean
+      reserve_time # the time was already parsed in the source, we don't want to overwrite it with current time.
     </filter>
 
     <filter kubernetes.var.log.containers.**>
